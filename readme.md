@@ -13,8 +13,23 @@ Install-Package Caracan.Pdf
 
 ## Usage
 
-TODO
+In Startup.cs
+```csharp 
+services.AddPdfGenerator(Configuration);
+```
+In appsettings.json
+```json 
+"PdfGeneratorOptions":{
+  "Connection":"127.0.0.1:9222"
+}
+```
+In your service, use dependency injection
 
+```csharp 
+public YourService(IPdfGenerator pdfGenerator){
+
+}
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
