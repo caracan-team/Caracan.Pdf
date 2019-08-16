@@ -4,6 +4,9 @@ trigger:
 - releases/*
 - feature/*
 
+variables:
+  buildConfiguration: 'Release'
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -25,3 +28,22 @@ steps:
     projects: '**/*.Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
+- task: DotNetCoreCLI@2
+  displayName: "dotnet pack"
+  inputs:
+    command: 'pack'
+    arguments: '--configuration $(buildConfiguration)'
+    packagesToPack: 'Caracan.Pdf/Caracan.Pdf.csproj;Caracan.Templates/Caracan.Templates.csproj;Caracan.Charts/Caracan.Charts.csproj'
+    nobuild: true
+    versioningScheme: 'off'
+
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  inputs:
+    command: 'push'
+    feedsToUse: 'select'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: 'CaracanTeam'
+    versioningScheme: 'off'
+    allowPackageConflicts: true
