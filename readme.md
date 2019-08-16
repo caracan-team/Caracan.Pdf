@@ -5,10 +5,12 @@ Caracan.Pdf is a .NET Core library for generating beautiful PDF documents from H
 
 ## Installation
 
-Use the nuget manager to install library.
+Use the nuget manager to install libraries.
 
 ```bash
-Install-Package Caracan.Pdf
+Install-Package Caracan.Pdf -version 1.0.0
+Install-Package Caracan.Templates -version 1.0.0
+Install-Package Caracan.Charts -version 1.0.0
 ```
 
 ## Usage
