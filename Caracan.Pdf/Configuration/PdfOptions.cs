@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caracan.Pdf.Models;
+using System;
 
 namespace Caracan.Pdf.Configuration
 {
@@ -11,10 +12,10 @@ namespace Caracan.Pdf.Configuration
         public bool PrintBackground { get; set; }
         public bool Landscape { get; set; }
         public string PageRanges { get; set; } = string.Empty;
-        //public PaperFormat Format { get; set; }
+        public Format Format { get; set; } = new Format();
         public object Width { get; set; }
         public object Height { get; set; }
-        //public MarginOptions MarginOptions { get; set; } = new MarginOptions();
+        public MarginOptions MarginOptions { get; set; } = new MarginOptions();
         public bool PreferCSSPageSize { get; set; }
     }
 }
