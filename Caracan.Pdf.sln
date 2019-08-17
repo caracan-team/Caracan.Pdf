@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Templates", "Caraca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Charts", "Caracan.Charts\Caracan.Charts.csproj", "{5A8163EF-41C2-4FAF-8E90-A96E5383D741}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Tests", "Caracan.Tests\Caracan.Tests.csproj", "{B5A9C82B-C143-435D-9A4E-58A2C166AD14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5A8163EF-41C2-4FAF-8E90-A96E5383D741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A8163EF-41C2-4FAF-8E90-A96E5383D741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A8163EF-41C2-4FAF-8E90-A96E5383D741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

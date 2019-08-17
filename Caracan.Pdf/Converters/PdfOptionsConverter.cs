@@ -8,17 +8,18 @@ namespace Caracan.Pdf.Converters
         {
             return new PdfOptions
             {
-                Height = pdfOptions.Height,
-                Width = pdfOptions.Width,
-                PageRanges = pdfOptions.PageRanges,
-                Landscape = pdfOptions.Landscape,
-                PreferCSSPageSize = pdfOptions.PreferCSSPageSize,
-                PrintBackground = pdfOptions.PrintBackground,
-                FooterTemplate = pdfOptions.FooterTemplate,
-                HeaderTemplate = pdfOptions.HeaderTemplate,
-                DisplayHeaderFooter = pdfOptions.DisplayHeaderFooter,
                 Scale = pdfOptions.Scale,
-
+                DisplayHeaderFooter = pdfOptions.DisplayHeaderFooter,
+                HeaderTemplate = pdfOptions.HeaderTemplate,
+                FooterTemplate = pdfOptions.FooterTemplate,
+                PrintBackground = pdfOptions.PrintBackground,
+                Landscape = pdfOptions.Landscape,
+                PageRanges = pdfOptions.PageRanges,
+                //Format = pdfOptions.Format,
+                Width = pdfOptions.Width,
+                Height = pdfOptions.Height,
+                //MarginOptions = pdfOptions.MarginOptions,
+                PreferCSSPageSize = pdfOptions.PreferCSSPageSize
             };
         }
     }
