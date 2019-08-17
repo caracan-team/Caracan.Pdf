@@ -21,5 +21,35 @@
         public ChartPadding ChartPadding { get; set; }
 
         public AxisY AxisY { get; set; }
+
+        public bool ShowArea { get; set; }
+
+        public bool ShowLine { get; set; }
+
+        public bool ShowPoint { get; set; }
+
+        public AxisX AxisX { get; set; }
+
+        public int SeriesBarDistance { get; set; }
+
+        public bool StackBars { get; set; }
+
+        public bool ReverseData { get; set; }
+
+        public bool HorizontalBars { get; set; }
+
+        public bool DistributeSeries { get; set; }
+
+        public bool Donut { get; set; }
+
+        public int DonutWidth { get; set; }
+        
+        public int StartAngle { get; set; }
+
+        public int Total { get; set; }
+
+        public bool ShowLabel { get; set; }
+
+        public bool DonutSolid { get; set; }
     }
 }
