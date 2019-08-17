@@ -4,5 +4,7 @@
     {
         public bool OnlyInteger { get; set; }
         public int Offset { get; set; }
+        // On the y-axis start means left and end means right
+        public string Position { get; set; }
     }
 }
