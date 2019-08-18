@@ -16,11 +16,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Caracan.Charts" />
       <Folder Include="Caracan.Templates" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Caracan.Charts\Caracan.Charts.csproj" />
       <ProjectReference Include="..\Caracan.Pdf\Caracan.Pdf.csproj" />
     </ItemGroup>
 
