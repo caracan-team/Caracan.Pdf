@@ -30,6 +30,17 @@ namespace Caracan.Pdf.Services
             }
         }
 
+        public async Task<Stream> CreatePdfFromUrlAsync(string url, Configuration.PdfOptions pdfOptions)
+        {
+            using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
+            using (var page = await browser.NewPageAsync())
+            {
+                await page.GoToAsync(url);
+
+                return await page.PdfStreamAsync(_converter.Convert(pdfOptions));
+            }
+        }
+
         private ConnectOptions GetConnectionOptions()
         {
             return new ConnectOptions()
