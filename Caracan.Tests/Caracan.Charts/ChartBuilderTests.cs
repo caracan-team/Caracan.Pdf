@@ -15,9 +15,11 @@ namespace Caracan.Tests.Caracan.Charts
         [Fact]
         public void Should_ReturnValidChart()
         {
+            // Arrange
             var labels = new List<string> { "A", "B" };
+            // Act
             var chart = _sut.Bar().AddLabels(labels).Build();
-
+            //Assert
             chart.Type.Should().Be(ChartType.Bar);
             chart.Data.Labels.Should().HaveCount(2);
         }

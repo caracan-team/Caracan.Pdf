@@ -21,6 +21,12 @@ namespace Caracan.Charts.Builders
             return this;
         }
 
+        public IChartBuilder AddName(string name)
+        {
+            _chart.Name = name;
+            return this;
+        }
+
         public IChartBuilder AddOptions(Options options)
         {
             _chart.Options = options;

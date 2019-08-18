@@ -16,6 +16,7 @@ namespace Caracan.Charts.Builders
         //IChartBuilder AddSeries();
 
         IChartBuilder AddOptions(Options options);
+        IChartBuilder AddName(string name);
         Chart Build();
     }
 }
