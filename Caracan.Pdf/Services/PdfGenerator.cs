@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 using Caracan.Pdf.Configuration;
 using Caracan.Pdf.Converters;
@@ -22,14 +21,23 @@ namespace Caracan.Pdf.Services
         public async Task<Stream> CreatePdfAsync(string html, Configuration.PdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
+            using (var page = await browser.NewPageAsync())
             {
-                using (var page = await browser.NewPageAsync())
-                {
-                    await page.SetContentAsync(html);
-                    await page.SetCacheEnabledAsync(false);
-                    var result = await page.GetContentAsync();
-                    return await page.PdfStreamAsync(_converter.Convert(pdfOptions));
-                }
+                await Task.WhenAll(page.SetContentAsync(html), 
+                                   page.SetCacheEnabledAsync(false));
+                
+                return await page.PdfStreamAsync(_converter.Convert(pdfOptions));
+            }
+        }
+
+        public async Task<Stream> CreatePdfFromUrlAsync(string url, Configuration.PdfOptions pdfOptions)
+        {
+            using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
+            using (var page = await browser.NewPageAsync())
+            {
+                await page.GoToAsync(url);
+
+                return await page.PdfStreamAsync(_converter.Convert(pdfOptions));
             }
         }
 

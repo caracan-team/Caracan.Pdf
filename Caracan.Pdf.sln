@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caracan.Charts", "Caracan.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Templates.UnitTests", "Caracan.Templates.UnitTests\Caracan.Templates.UnitTests.csproj", "{24CB58DF-6437-436A-B8D7-D769CFAC8894}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Tests", "Caracan.Tests\Caracan.Tests.csproj", "{B5A9C82B-C143-435D-9A4E-58A2C166AD14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +31,10 @@ Global
 		{5A8163EF-41C2-4FAF-8E90-A96E5383D741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A8163EF-41C2-4FAF-8E90-A96E5383D741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A8163EF-41C2-4FAF-8E90-A96E5383D741}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24CB58DF-6437-436A-B8D7-D769CFAC8894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24CB58DF-6437-436A-B8D7-D769CFAC8894}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24CB58DF-6437-436A-B8D7-D769CFAC8894}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24CB58DF-6437-436A-B8D7-D769CFAC8894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A9C82B-C143-435D-9A4E-58A2C166AD14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
