@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Pdf", "Caracan.Pdf\Caracan.Pdf.csproj", "{307BA179-70E1-4F13-82E8-AFC18D68AB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caracan.Pdf", "Caracan.Pdf\Caracan.Pdf.csproj", "{307BA179-70E1-4F13-82E8-AFC18D68AB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Templates", "Caracan.Templates\Caracan.Templates.csproj", "{F340969F-DD74-4A9F-BB31-9EE3A0808FEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caracan.Templates", "Caracan.Templates\Caracan.Templates.csproj", "{F340969F-DD74-4A9F-BB31-9EE3A0808FEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Charts", "Caracan.Charts\Caracan.Charts.csproj", "{5A8163EF-41C2-4FAF-8E90-A96E5383D741}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caracan.Charts", "Caracan.Charts\Caracan.Charts.csproj", "{5A8163EF-41C2-4FAF-8E90-A96E5383D741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caracan.Tests", "Caracan.Tests\Caracan.Tests.csproj", "{B5A9C82B-C143-435D-9A4E-58A2C166AD14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Caracan.Tests", "Caracan.Tests\Caracan.Tests.csproj", "{B5A9C82B-C143-435D-9A4E-58A2C166AD14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
