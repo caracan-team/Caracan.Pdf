@@ -5,6 +5,6 @@ namespace Caracan.Pdf.Services.IPdfGenerator
 {
     public interface IPdfGenerator
     {
-        Task<Stream> CreatePdfAsync(string html, Configuration.PdfOptions options);
+        Task<Stream> CreatePdfAsync(Configuration.PdfOptions options);
     }
 }

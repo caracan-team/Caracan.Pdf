@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Caracan.Pdf.Configuration;
 using Caracan.Pdf.Converters;
@@ -12,9 +13,9 @@ namespace Caracan.Pdf.Services
         private readonly PdfGeneratorOptions _pdfGeneratorOptions;
         private readonly IPdfOptionsConverter _converter;
 
-        public HtmlRenderer(IOptions<PdfGeneratorOptions> options, IPdfOptionsConverter converter)
+        public HtmlRenderer(PdfGeneratorOptions options, IPdfOptionsConverter converter)
         {
-            _pdfGeneratorOptions = options.Value;
+            _pdfGeneratorOptions = options;
             _converter = converter;
         }
 
@@ -47,7 +48,10 @@ namespace Caracan.Pdf.Services
         {
             return new ConnectOptions
             {
-                BrowserWSEndpoint = _pdfGeneratorOptions.Connection
+                BrowserWSEndpoint = _pdfGeneratorOptions.Connection.StartsWith("wss://") ||
+                                    _pdfGeneratorOptions.Connection.StartsWith("ws://")
+                    ? _pdfGeneratorOptions.Connection
+                    : $"wss://{_pdfGeneratorOptions.Connection}"
             };
         }
     }

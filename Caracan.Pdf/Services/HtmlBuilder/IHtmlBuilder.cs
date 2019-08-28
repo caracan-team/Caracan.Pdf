@@ -5,7 +5,7 @@ namespace Caracan.Pdf.Services.HtmlBuilder
     public interface IHtmlBuilder
     {
         IHtmlBuilder WithHtml(string initHtml);
-        IHtmlBuilder AddCharts(string tbaOption);
+        IHtmlBuilder AddCharts(string chartHtml);
         string GetHtml();
     }
 }

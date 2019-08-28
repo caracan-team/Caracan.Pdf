@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Caracan.Pdf.Configuration
+﻿namespace Caracan.Pdf.Configuration
 {
     public class PdfGeneratorOptions
     {
