@@ -10,16 +10,16 @@ namespace Caracan.Pdf.Services
 {
     public class HtmlRenderer : IHtmlRenderer
     {
-        private readonly PdfGeneratorOptions _pdfGeneratorOptions;
+        private readonly ChromeConnectionOptions _pdfGeneratorOptions;
         private readonly IPdfOptionsConverter _converter;
 
-        public HtmlRenderer(PdfGeneratorOptions options, IPdfOptionsConverter converter)
+        public HtmlRenderer(ChromeConnectionOptions options, IPdfOptionsConverter converter)
         {
             _pdfGeneratorOptions = options;
             _converter = converter;
         }
 
-        public async Task<Stream> RenderPdfAsync(string html, Configuration.PdfOptions pdfOptions)
+        public async Task<Stream> RenderPdfAsync(string html, Configuration.CaracanPdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())
@@ -33,7 +33,7 @@ namespace Caracan.Pdf.Services
             }
         }
 
-        public async Task<Stream> RenderPdfFromUrlAsync(string url, Configuration.PdfOptions pdfOptions)
+        public async Task<Stream> RenderPdfFromUrlAsync(string url, Configuration.CaracanPdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())

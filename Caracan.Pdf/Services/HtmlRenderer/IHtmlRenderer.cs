@@ -5,7 +5,7 @@ namespace Caracan.Pdf.Services
 {
     public interface IHtmlRenderer
     {
-        Task<Stream> RenderPdfAsync(string html, Configuration.PdfOptions options);
-        Task<Stream> RenderPdfFromUrlAsync(string url, Configuration.PdfOptions options);
+        Task<Stream> RenderPdfAsync(string html, Configuration.CaracanPdfOptions options);
+        Task<Stream> RenderPdfFromUrlAsync(string url, Configuration.CaracanPdfOptions options);
     }
 }

@@ -12,7 +12,7 @@ namespace Caracan.Tests.Caracan.Pdf
     {
         [Theory]
         [AutoData]
-        public void Should_ReturnValidPdfOptionsObject(PdfOptions pdfOptions)
+        public void Should_ReturnValidPdfOptionsObject(CaracanPdfOptions pdfOptions)
         {
             // Arrange
             // TODO: Do sth with that properties.

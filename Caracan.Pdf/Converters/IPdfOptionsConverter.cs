@@ -7,6 +7,6 @@ namespace Caracan.Pdf.Converters
 {
     public interface IPdfOptionsConverter
     {
-        PdfOptions Convert(Configuration.PdfOptions pdfOptions);
+        PdfOptions Convert(Configuration.CaracanPdfOptions pdfOptions);
     }
 }

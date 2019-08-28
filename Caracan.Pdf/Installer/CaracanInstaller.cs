@@ -20,7 +20,7 @@ namespace Caracan.Pdf.Extensions
             {
                 configuration = serviceProvider.GetService<IConfiguration>();
             }
-            var options = configuration.GetSection(section).Get<PdfGeneratorOptions>();    
+            var options = configuration.GetSection(section).Get<ChromeConnectionOptions>();    
             
             services.AddSingleton(options);
             services.AddTransient<IPdfOptionsConverter, PdfOptionsConverter>();

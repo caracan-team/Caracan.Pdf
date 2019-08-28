@@ -1,6 +1,6 @@
 ﻿namespace Caracan.Pdf.Configuration
 {
-    public class PdfGeneratorOptions
+    public class ChromeConnectionOptions
     {
         public string Connection { get; set; }
     }

@@ -6,7 +6,7 @@ namespace Caracan.Pdf.Converters
 {
     public class PdfOptionsConverter : IPdfOptionsConverter
     {
-        public PdfOptions Convert(Configuration.PdfOptions pdfOptions)
+        public PdfOptions Convert(Configuration.CaracanPdfOptions pdfOptions)
         {
             return new PdfOptions
             {
@@ -48,7 +48,6 @@ namespace Caracan.Pdf.Converters
                     return PaperFormat.A5;
                 case FormatType.A6:
                     return PaperFormat.A6;
-
                 case FormatType.Letter:
                     return PaperFormat.Letter;
                 case FormatType.Legal:
@@ -57,7 +56,6 @@ namespace Caracan.Pdf.Converters
                     return PaperFormat.Ledger;
                 case FormatType.Tabloid:
                     return PaperFormat.Tabloid;
-
                 default:
                     return new PaperFormat(format.Width, format.Height);
             }

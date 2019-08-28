@@ -22,9 +22,8 @@ namespace Caracan.Pdf.Services.IPdfGenerator
             _htmlBuilder = htmlBuilder;
             _pdfWriter = pdfWriter;
         }
-    
 
-        public async Task<Stream> CreatePdfAsync(PdfOptions options)
+        public async Task<Stream> CreatePdfAsync(CaracanPdfOptions options)
         {
             var template = await _templateManager.GetTemplateAsync();
 

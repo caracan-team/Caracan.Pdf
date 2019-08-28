@@ -3,7 +3,10 @@ using System;
 
 namespace Caracan.Pdf.Configuration
 {
-    public class PdfOptions
+    /// <summary>
+    /// Options customizing pdf generation.
+    /// </summary>
+    public class CaracanPdfOptions
     {
         public Decimal Scale { get; set; } = Decimal.One;
         public bool DisplayHeaderFooter { get; set; }
