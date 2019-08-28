@@ -7,22 +7,24 @@ using PuppeteerSharp;
 
 namespace Caracan.Pdf.Services
 {
-    public class PdfGenerator : IPdfGenerator
+    public class HtmlRenderer : IHtmlRenderer
     {
         private readonly PdfGeneratorOptions _pdfGeneratorOptions;
         private readonly IPdfOptionsConverter _converter;
 
-        public PdfGenerator(IOptions<PdfGeneratorOptions> options, IPdfOptionsConverter converter)
+        public HtmlRenderer(IOptions<PdfGeneratorOptions> options, IPdfOptionsConverter converter)
         {
             _pdfGeneratorOptions = options.Value;
             _converter = converter;
         }
 
-        public async Task<Stream> CreatePdfAsync(string html, Configuration.PdfOptions pdfOptions)
+        public async Task<Stream> RenderPdfAsync(string html, Configuration.PdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())
             {
+                //there goes logic that will be responsible for manipulation of html
+                
                 await Task.WhenAll(page.SetContentAsync(html), 
                                    page.SetCacheEnabledAsync(false));
                 
@@ -30,7 +32,7 @@ namespace Caracan.Pdf.Services
             }
         }
 
-        public async Task<Stream> CreatePdfFromUrlAsync(string url, Configuration.PdfOptions pdfOptions)
+        public async Task<Stream> RenderPdfFromUrlAsync(string url, Configuration.PdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())
@@ -43,7 +45,7 @@ namespace Caracan.Pdf.Services
 
         private ConnectOptions GetConnectionOptions()
         {
-            return new ConnectOptions()
+            return new ConnectOptions
             {
                 BrowserWSEndpoint = _pdfGeneratorOptions.Connection
             };

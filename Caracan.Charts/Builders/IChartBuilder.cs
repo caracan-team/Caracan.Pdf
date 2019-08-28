@@ -10,8 +10,6 @@ namespace Caracan.Charts.Builders
         //TODO: we must decide how store series(look at chartist docs - several posibilities of the series format)
         //IChartBuilder AddSeries();
 
-
-
         IChartBuilder ShowArea();
         //TODO: etc
 

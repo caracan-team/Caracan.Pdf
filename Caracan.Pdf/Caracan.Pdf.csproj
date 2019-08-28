@@ -13,4 +13,8 @@
     <PackageReference Include="PuppeteerSharp" Version="1.19.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Caracan.Templates\Caracan.Templates.csproj" />
+  </ItemGroup>
+
 </Project>
