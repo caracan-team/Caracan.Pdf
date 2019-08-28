@@ -13,7 +13,7 @@ namespace Caracan.Pdf.Extensions
     {
         private const string PdfGeneratorSection = "caracan";
         
-        public static IServiceCollection AddPdfGenerator(this IServiceCollection services, string section = PdfGeneratorSection)
+        public static IServiceCollection AddCaracan(this IServiceCollection services, string section = PdfGeneratorSection)
         {
             IConfiguration configuration;
             using (var serviceProvider = services.BuildServiceProvider())

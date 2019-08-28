@@ -22,7 +22,7 @@ namespace Caracan.Pdf.Services.IPdfGenerator
             _htmlBuilder = htmlBuilder;
             _pdfWriter = pdfWriter;
         }
-
+    
 
         public async Task<Stream> CreatePdfAsync(PdfOptions options)
         {
@@ -38,8 +38,5 @@ namespace Caracan.Pdf.Services.IPdfGenerator
             
             return pdfStream;
         }
-
-
-
     }
 }

@@ -17,12 +17,18 @@ Install-Package Caracan.Charts -version 1.0.0
 
 In Startup.cs
 ```csharp 
-services.AddPdfGenerator(Configuration);
+services.AddCaracan();
 ```
+or alternatively with providing configuration section
+
+```csharp 
+services.AddCaracan("your configuration section");
+```
+
 In appsettings.json
 ```json 
-"PdfGeneratorOptions":{
-  "Connection":"127.0.0.1:9222"
+"caracan":{
+  "connection":"127.0.0.1:9222"
 }
 ```
 In your service, use dependency injection
