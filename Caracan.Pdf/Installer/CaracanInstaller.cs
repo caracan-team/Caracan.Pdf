@@ -4,6 +4,7 @@ using Caracan.Pdf.Converters;
 using Caracan.Pdf.Services;
 using Caracan.Pdf.Services.HtmlBuilder;
 using Caracan.Pdf.Services.IPdfGenerator;
+using Caracan.Templates;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,9 +27,14 @@ namespace Caracan.Pdf.Extensions
             services.AddTransient<IPdfOptionsConverter, PdfOptionsConverter>();
 
             services.AddSingleton<IPdfGenerator, PdfGenerator>();
-            services.AddSingleton<IHtmlRenderer, HtmlRenderer>();
+
             services.AddSingleton<ITemplateManager, TemplateManager>();
+            services.AddSingleton<ITemplateLoader, TemplateLoader>();
+            services.AddSingleton<ITemplateConverter, TemplateConverter>();
+            
+            services.AddSingleton<IHtmlRenderer, HtmlRenderer>();
             services.AddSingleton<IHtmlBuilder, HtmlBuilder>();
+            
             services.AddSingleton<IPdfWriter, PdfWriter>();
 
             return services;

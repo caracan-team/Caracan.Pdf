@@ -1,0 +1,92 @@
+<h1>{{ page_title }}</h1>
+
+<ul>
+  {%- for article in blog.articles -%}
+    <li>
+
+      <h2>
+        <a href="{{ article.url }}">
+
+          {%- if article.image -%}
+            <img src="{{ article.image | img_url: '300x300' }}" alt="">
+
+            <noscript>
+            <p>
+              {{ article | img_url: '455x300', scale: 2 | img_tag: article.title }}
+            </p>
+            </noscript>
+          {%- endif -%}
+
+          {{ article.title }}
+        </a>
+      </h2>
+
+      {%- if section.settings.blog_show_author -%}
+        <span>
+          By {{ article.author }}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.blog_show_date -%}
+        <span>
+          {{ article.published_at | time_tag: format: 'month_day_year' }}
+        </span>
+      {%- endif -%}
+
+      <p>
+        {%- if article.excerpt.size > 0 -%}
+          {{ article.excerpt }}
+        {%- else -%}
+          {{ article.content | strip_html | truncate: 150 }}
+        {%- endif -%}
+      </p>
+
+      {%- if article.tags.size > 0 -%}
+        <ul>
+          {{ 'blogs.article.posted_in' }}
+            <li>
+              {%- for tag in article.tags -%}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+              {%- endfor -%}
+            </li>
+        </ul>
+      {%- endif -%}
+
+      <ul>
+        <li>
+          <a href="{{ article.url }}" aria-label="Read more: {{ article.title }}">
+            Read more
+          </a>
+        </li>
+        {%- if blog.comments_enabled? and article.comments_count > 0 -%}
+          <li>
+            <a href="{{ article.url }}#comments">
+              {{ article.comments_count }}
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+
+    </li>
+  {%- endfor -%}
+</ul>
+
+{% schema %}
+{
+  "name": "Blog pages",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_show_author",
+      "label": "Show author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": "Show date",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

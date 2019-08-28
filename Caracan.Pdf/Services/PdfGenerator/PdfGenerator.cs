@@ -5,29 +5,33 @@ using Caracan.Liquid;
 using Caracan.Pdf.Configuration;
 using Caracan.Pdf.Extensions;
 using Caracan.Pdf.Services.HtmlBuilder;
+using Caracan.Templates;
 
 namespace Caracan.Pdf.Services.IPdfGenerator
 {
     class PdfGenerator : IPdfGenerator
     {
-        private readonly ITemplateManager _templateManager;
+        private readonly ITemplateLoader _templateLoader;
         private readonly IHtmlRenderer _renderer;
         private readonly IHtmlBuilder _htmlBuilder;
         private readonly IPdfWriter _pdfWriter;
 
-        public PdfGenerator(IHtmlRenderer renderer, ITemplateManager templateManager, IHtmlBuilder htmlBuilder, IPdfWriter pdfWriter)
+        public PdfGenerator(IHtmlRenderer renderer, ITemplateLoader templateLoader, IHtmlBuilder htmlBuilder, IPdfWriter pdfWriter)
         {
             _renderer = renderer;
-            _templateManager = templateManager;
+            _templateLoader = templateLoader;
             _htmlBuilder = htmlBuilder;
             _pdfWriter = pdfWriter;
         }
 
         public async Task<Stream> CreatePdfAsync(CaracanPdfOptions options)
         {
-            var template = await _templateManager.GetTemplateAsync();
+            var templateFileName = "template.liquid";
+            var template = await _templateLoader.GetTemplateAsync(templateFileName);
+            
+            var bindingTemplateObjcect = new TemplateLiquidObject();
 
-            var interpolatedHtml = _htmlBuilder.WithHtml(template)
+            var interpolatedHtml = _htmlBuilder.WithHtml(template, bindingTemplateObjcect)
                 .AddCharts(null)
                 .GetHtml();
             
