@@ -5,6 +5,7 @@ using Caracan.Pdf.Services;
 using Caracan.Pdf.Services.HtmlBuilder;
 using Caracan.Pdf.Services.IPdfGenerator;
 using Caracan.Templates;
+using Fluid;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,7 +31,7 @@ namespace Caracan.Pdf.Extensions
 
             services.AddSingleton<ITemplateManager, TemplateManager>();
             services.AddSingleton<ITemplateLoader, TemplateLoader>();
-            services.AddSingleton<ITemplateConverter, TemplateConverter>();
+            TemplateContext.GlobalMemberAccessStrategy.Register<TemplateLiquidObject>();
             
             services.AddSingleton<IHtmlRenderer, HtmlRenderer>();
             services.AddSingleton<IHtmlBuilder, HtmlBuilder>();

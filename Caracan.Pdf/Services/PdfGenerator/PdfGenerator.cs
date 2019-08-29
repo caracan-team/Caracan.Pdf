@@ -11,27 +11,30 @@ namespace Caracan.Pdf.Services.IPdfGenerator
 {
     class PdfGenerator : IPdfGenerator
     {
-        private readonly ITemplateLoader _templateLoader;
         private readonly IHtmlRenderer _renderer;
         private readonly IHtmlBuilder _htmlBuilder;
         private readonly IPdfWriter _pdfWriter;
+        private readonly ITemplateManager _templateManager;
 
-        public PdfGenerator(IHtmlRenderer renderer, ITemplateLoader templateLoader, IHtmlBuilder htmlBuilder, IPdfWriter pdfWriter)
+        public PdfGenerator(IHtmlRenderer renderer, IHtmlBuilder htmlBuilder, IPdfWriter pdfWriter, ITemplateManager templateManager)
         {
             _renderer = renderer;
-            _templateLoader = templateLoader;
             _htmlBuilder = htmlBuilder;
             _pdfWriter = pdfWriter;
+            _templateManager = templateManager;
         }
 
         public async Task<Stream> CreatePdfAsync(CaracanPdfOptions options)
         {
             var templateFileName = "template.liquid";
-            var template = await _templateLoader.GetTemplateAsync(templateFileName);
-            
-            var bindingTemplateObjcect = new TemplateLiquidObject();
+            var templateLiquidObject = new TemplateLiquidObject
+            {
+                title = "Caracan Template 1"
+            }; // todo: bind liquid template with strongly typed object
 
-            var interpolatedHtml = _htmlBuilder.WithHtml(template, bindingTemplateObjcect)
+            var renderedTemplate = await _templateManager.GetTemplateAndBind(templateFileName, templateLiquidObject);
+
+            var interpolatedHtml = _htmlBuilder.WithTemplate(renderedTemplate)
                 .AddCharts(null)
                 .GetHtml();
             

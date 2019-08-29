@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace Caracan.Templates
 {
-    public class TemplateConverter : ITemplateConverter
+    public static class LiquidBindedObjectExtensions
     {
-        public Dictionary<string, object> Convert<T>(T template) where T : class, ILiquidTemplate
+        public static Dictionary<string, object> ToDictionary(this ILiquidTemplate template)
         {
             var json = JsonConvert.SerializeObject(template);
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);

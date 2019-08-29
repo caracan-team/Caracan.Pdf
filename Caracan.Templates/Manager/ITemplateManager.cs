@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using DotLiquid;
+﻿using System.Threading.Tasks;
+using Caracan.Templates;
 
 namespace Caracan.Liquid
 {
     public interface ITemplateManager
     {
-        Template ParseTemplate(string html);
-        string RenderTemplate(Template template, Dictionary<string, object> templateProperties);
+        Task<string> GetTemplateAndBind(string templateFileName, ILiquidTemplate liquidTemplateData);
     }
 }

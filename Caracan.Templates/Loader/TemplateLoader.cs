@@ -1,7 +1,6 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
 namespace Caracan.Templates
 {
