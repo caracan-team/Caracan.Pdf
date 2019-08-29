@@ -5,28 +5,36 @@ Caracan.Pdf is a .NET Core library for generating beautiful PDF documents from H
 
 ## Installation
 
-Use the nuget manager to install library.
+Use the nuget manager to install libraries.
 
 ```bash
-Install-Package Caracan.Pdf
+Install-Package Caracan.Pdf -version 1.0.0
+Install-Package Caracan.Templates -version 1.0.0
+Install-Package Caracan.Charts -version 1.0.0
 ```
 
 ## Usage
 
 In Startup.cs
 ```csharp 
-services.AddPdfGenerator(Configuration);
+services.AddCaracan();
 ```
+or alternatively with providing configuration section
+
+```csharp 
+services.AddCaracan("your configuration section");
+```
+
 In appsettings.json
 ```json 
-"PdfGeneratorOptions":{
-  "Connection":"127.0.0.1:9222"
+"caracan":{
+  "connection":"127.0.0.1:9222"
 }
 ```
 In your service, use dependency injection
 
 ```csharp 
-public YourService(IPdfGenerator pdfGenerator){
+public YourService(ICaracanPdfGenerator caracan){
 
 }
 ```

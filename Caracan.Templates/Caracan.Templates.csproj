@@ -6,4 +6,32 @@
         <Authors>CaracanTeam</Authors>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+        <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="template_navigation.liquid">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Templates\template_navigation.liquid" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fluid.Core" Version="1.0.0-beta-9588" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Templates\template.liquid" />
+      <Content Include="Templates\template.liquid">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

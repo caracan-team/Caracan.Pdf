@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Caracan.Pdf.Services
+namespace Caracan.Charts.Extensions
 {
-    public class PdfGenerator : IPdfGenerator
+    public static class ChartsExtensions
     {
     }
 }
