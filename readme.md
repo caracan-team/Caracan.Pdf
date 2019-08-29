@@ -34,7 +34,7 @@ In appsettings.json
 In your service, use dependency injection
 
 ```csharp 
-public YourService(IPdfGenerator pdfGenerator){
+public YourService(ICaracanPdfGenerator caracan){
 
 }
 ```

@@ -9,7 +9,7 @@ using Caracan.Templates;
 
 namespace Caracan.Pdf.Services.IPdfGenerator
 {
-    class PdfGenerator : IPdfGenerator
+    class PdfGenerator : ICaracanPdfGenerator
     {
         private readonly IHtmlRenderer _renderer;
         private readonly IHtmlBuilder _htmlBuilder;
