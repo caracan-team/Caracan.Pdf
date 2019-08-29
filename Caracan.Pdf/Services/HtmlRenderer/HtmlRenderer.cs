@@ -19,7 +19,7 @@ namespace Caracan.Pdf.Services
             _converter = converter;
         }
 
-        public async Task<Stream> RenderPdfAsync(string html, Configuration.CaracanPdfOptions pdfOptions)
+        public async Task<Stream> RenderHtmlToPdfAsync(string html, Configuration.CaracanPdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())

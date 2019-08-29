@@ -27,7 +27,7 @@ namespace Caracan.Pdf.Extensions
             services.AddSingleton(options);
             services.AddTransient<IPdfOptionsConverter, PdfOptionsConverter>();
 
-            services.AddSingleton<ICaracanPdfGenerator, PdfGenerator>();
+            services.AddSingleton<ICaracanPdfGenerator, CaracanPdfGenerator>();
 
             services.AddSingleton<ITemplateManager, TemplateManager>();
             services.AddSingleton<ITemplateLoader, TemplateLoader>();
@@ -35,8 +35,6 @@ namespace Caracan.Pdf.Extensions
             
             services.AddSingleton<IHtmlRenderer, HtmlRenderer>();
             services.AddSingleton<IHtmlBuilder, HtmlBuilder>();
-            
-            services.AddSingleton<IPdfWriter, PdfWriter>();
 
             return services;
         }
