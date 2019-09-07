@@ -24,7 +24,7 @@ namespace Caracan.Pdf.Services.PdfGenerator
             where TLiquidData : class
         {
             //todo: templateObject file name passed from higher level, not hardcoded. 
-            const string templateFileName = "template.liquid2";
+            const string templateFileName = "template.liquid";
             var boundTemplate = await _templateManager.GetTemplateAndBind(templateFileName, data);
 
             //unused yet, but might be a right direction for fluent building HTML, appending charts and stuff.
