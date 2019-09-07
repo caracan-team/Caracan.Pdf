@@ -18,11 +18,11 @@ namespace Caracan.Pdf.Services.PdfGenerator
             where TLiquidData : class
         {
             var stream = _reportBuilder
-                .WithDefaultTemplate()
+                .AddDefaultTemplate()
                 .WithData(data)
                 .WithOptions(options)
                 .AddCharts(null)
-                .Streamify();
+                .ToStream();
 
             return stream;
         }

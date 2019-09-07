@@ -7,8 +7,8 @@ namespace Caracan.Pdf.Services.HtmlBuilder
     {
         IReportBuilder WithData(object data);
         IReportBuilder WithOptions(CaracanPdfOptions options);
-        IReportBuilder WithDefaultTemplate();
+        IReportBuilder AddDefaultTemplate();
         IReportBuilder AddCharts(string chartHtml);
-        Stream Streamify();
+        Stream ToStream();
     }
 }

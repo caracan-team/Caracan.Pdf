@@ -9,13 +9,13 @@ namespace Caracan.Pdf.Services.HtmlBuilder
 {
     public class ReportBuilder : IReportBuilder
     {
-        private StringBuilder _sb = new StringBuilder();
         private readonly IHtmlRenderer _renderer;
         private readonly IFluidBinder _fluidBinder;
         private readonly ITemplateLoader _templateLoader;
+        private StringBuilder _sb = new StringBuilder();
         private CaracanPdfOptions _options;
         private object _data;
-
+        private const string TemplateFileName = "template.liquid";
 
         public ReportBuilder(IHtmlRenderer renderer, IFluidBinder fluidBinder, ITemplateLoader templateLoader)
         {
@@ -36,12 +36,10 @@ namespace Caracan.Pdf.Services.HtmlBuilder
             return this;
         }
 
-        public IReportBuilder WithDefaultTemplate()
+        public IReportBuilder AddDefaultTemplate()
         {
             //todo: templateObject file name passed from higher level, not hardcoded. 
-            const string templateFileName = "template.liquid";
-
-            var template = _templateLoader.GetTemplateAsync(templateFileName)
+            var template = _templateLoader.GetTemplateAsync(TemplateFileName)
                 .GetAwaiter()
                 .GetResult();
 
@@ -57,9 +55,9 @@ namespace Caracan.Pdf.Services.HtmlBuilder
         }
 
 
-        public Stream Streamify()
+        public Stream ToStream()
         {
-            var boundTemplate = BindData();
+            var boundTemplate = _fluidBinder.Bind(_sb.ToString(), _data);
 
             //renders HTML to Stream
             var pdfStream = _renderer.RenderHtmlToPdfAsync(boundTemplate, _options)
@@ -67,13 +65,6 @@ namespace Caracan.Pdf.Services.HtmlBuilder
                 .GetResult();
 
             return pdfStream;
-        }
-
-        private string BindData()
-        {
-            return _fluidBinder.Bind(_sb.ToString(), _data)
-                .GetAwaiter()
-                .GetResult();
         }
     }
 }

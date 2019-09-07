@@ -10,7 +10,7 @@ namespace Caracan.Templates.Manager
         /// <param name="fluidTemplate"></param>
         /// <param name="liquidTemplateObjectData"></param>
         /// <returns></returns>
-        Task<string> Bind(string fluidTemplate, object liquidTemplateObjectData);
+        string Bind(string fluidTemplate, object liquidTemplateObjectData);
         
     }
 }
