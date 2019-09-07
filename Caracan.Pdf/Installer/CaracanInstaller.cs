@@ -32,7 +32,7 @@ namespace Caracan.Pdf.Installer
 
             services.AddSingleton<ICaracanPdfGenerator, CaracanPdfGenerator>();
 
-            services.AddSingleton<ITemplateManager, TemplateManager>();
+            services.AddSingleton<IFluidBinder, FluidBinder>();
             services.AddSingleton<ITemplateLoader, TemplateLoader>();
             
             //fluid types registration
@@ -45,7 +45,7 @@ namespace Caracan.Pdf.Installer
             TemplateContext.GlobalFilters.AddFilter("HtmlEncode", CustomFilters.HtmlEncode);
             
             services.AddSingleton<IHtmlRenderer, HtmlRenderer>();
-            services.AddSingleton<IHtmlBuilder, HtmlBuilder>();
+            services.AddSingleton<IReportBuilder, ReportBuilder>();
 
             return services;
         }
