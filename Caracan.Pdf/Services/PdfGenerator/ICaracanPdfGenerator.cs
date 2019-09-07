@@ -1,10 +1,11 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Caracan.Pdf.Services.IPdfGenerator
+namespace Caracan.Pdf.Services.PdfGenerator
 {
     public interface ICaracanPdfGenerator
     {
-        Task<Stream> CreatePdfAsync(Configuration.CaracanPdfOptions options);
+        Task<Stream> CreatePdfAsync<TLiquidData>(TLiquidData data, Configuration.CaracanPdfOptions options)
+            where TLiquidData : class;
     }
 }

@@ -2,7 +2,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Caracan.Templates
+namespace Caracan.Templates.Loader
 {
     public class TemplateLoader : ITemplateLoader
     {

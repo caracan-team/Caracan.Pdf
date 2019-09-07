@@ -1,16 +1,16 @@
 ﻿using System.Threading.Tasks;
-using Caracan.Templates;
 
-namespace Caracan.Liquid
+namespace Caracan.Templates.Manager
 {
     public interface ITemplateManager
     {
         /// <summary>
-        /// Returns bound template for given name with given liquid object data
+        /// Returns bound templateObject for given name with given liquid object data
         /// </summary>
         /// <param name="templateFileName"></param>
-        /// <param name="liquidTemplateData"></param>
+        /// <param name="liquidTemplateObjectData"></param>
         /// <returns></returns>
-        Task<string> GetTemplateAndBind(string templateFileName, ILiquidTemplate liquidTemplateData);
+        Task<string> GetTemplateAndBind(string templateFileName, object liquidTemplateObjectData);
+        
     }
 }

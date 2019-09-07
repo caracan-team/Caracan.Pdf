@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-namespace Caracan.Pdf.Services
+namespace Caracan.Pdf.Services.HtmlRenderer
 {
     public interface IHtmlRenderer
     {

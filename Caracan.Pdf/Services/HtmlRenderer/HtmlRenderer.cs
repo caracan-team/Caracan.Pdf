@@ -1,12 +1,10 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Caracan.Pdf.Configuration;
 using Caracan.Pdf.Converters;
-using Microsoft.Extensions.Options;
 using PuppeteerSharp;
 
-namespace Caracan.Pdf.Services
+namespace Caracan.Pdf.Services.HtmlRenderer
 {
     public class HtmlRenderer : IHtmlRenderer
     {
@@ -19,7 +17,7 @@ namespace Caracan.Pdf.Services
             _converter = converter;
         }
 
-        public async Task<Stream> RenderHtmlToPdfAsync(string html, Configuration.CaracanPdfOptions pdfOptions)
+        public async Task<Stream> RenderHtmlToPdfAsync(string html, CaracanPdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())
@@ -33,7 +31,7 @@ namespace Caracan.Pdf.Services
             }
         }
 
-        public async Task<Stream> RenderPdfFromUrlAsync(string url, Configuration.CaracanPdfOptions pdfOptions)
+        public async Task<Stream> RenderPdfFromUrlAsync(string url, CaracanPdfOptions pdfOptions)
         {
             using (var browser = await Puppeteer.ConnectAsync(GetConnectionOptions()))
             using (var page = await browser.NewPageAsync())
