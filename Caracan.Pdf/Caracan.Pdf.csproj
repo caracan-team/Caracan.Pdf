@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>CaracanTeam</Authors>
-    <PackageVersion>1.0.0a</PackageVersion>
-    <Title>Seb</Title>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Title></Title>
   </PropertyGroup>
 
   <ItemGroup>

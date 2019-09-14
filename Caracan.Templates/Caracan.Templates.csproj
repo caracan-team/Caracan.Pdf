@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>CaracanTeam</Authors>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
