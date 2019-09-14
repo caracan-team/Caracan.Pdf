@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Caracan.Charts.Models
+﻿namespace Caracan.Charts.Models
 {
     public class Chart
     {

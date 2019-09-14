@@ -1,53 +1,238 @@
-<style>
-  .product-card {
-    box-sizing: border-box;
-    float: left;
-    min-height: 1em;
-    padding-left: 2em;
-    vertical-align: top;
-    width: 25%;
-  }
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Caracan Report no.1"input goes there"</title>
+    <style media="screen">
+        body {
+            font-family: 'Segoe UI', 'Microsoft Sans Serif', sans-serif;
+        }
 
-  .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap;
-  }
-</style>
+        /*
+            These next two styles are apparently the modern way to clear a float. This allows the logo
+            and the word "Invoice" to remain above the From and To sections. Inserting an empty div
+            between them with clear:both also works but is bad style.
+            Reference:
+            http://stackoverflow.com/questions/490184/what-is-the-best-way-to-clear-the-css-style-float
+        */
+        header:before, header:after {
+            content: " ";
+            display: table;
+        }
 
-<h1>{{ collection.title }}</h1>
+        header:after {
+            clear: both;
+        }
 
-{%- if collection.description != blank -%}
-  <p>{{ collection.description }}</p>
-{%- endif -%}
+        .invoiceNbr {
+            font-size: 40px;
+            margin-right: 30px;
+            margin-top: 30px;
+            float: right;
+        }
 
-<ul>
-  {%- for product in collection.products -%}
-    <li>
-      <a class="product-card" href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: '1024x' }}" alt="">
-        {{ product.title }}
-        <p>
-          <span aria-hidden="true">—</span>
-          {%- if product.price_varies -%}
-            <span class="visuallyhidden">Starting at</span>
-            {{ product.price_min | money_without_trailing_zeros }}
-            <span aria-hidden="true">+</span>
-          {%- else -%}
-            {{ product.price | money_without_trailing_zeros }}
-          {%- endif -%} 
-        </p>
-        <p>
-          <span class="visuallyhidden">by</span>
-          {{ product.vendor }}
-        </p>
-      </a>
-    </li>
-  {%- endfor -%}
-</ul>
+        .logo {
+            float: left;
+        }
+
+        .from {
+            float: left;
+        }
+
+        .to {
+            float: right;
+        }
+
+        .fromto {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #e8e5e5;
+            border-radius: 5px;
+            margin: 20px;
+            min-width: 200px;
+        }
+
+        .fromtocontent {
+            margin: 10px 15px 10px 10px;
+        }
+
+        .panel {
+            background-color: #e8e5e5;
+            padding: 7px;
+        }
+
+        .items {
+            clear: both;
+            display: table;
+            padding: 20px;
+        }
+
+        /* Factor out common styles for all of the "col-" classes.*/
+        div[class^="col-"] {
+            display: table-cell;
+            padding: 7px;
+        }
+
+        /*for clarity name column styles by the percentage of width */
+        .col-1-10 {
+            width: 10%;
+        }
+
+        .col-1-52 {
+            width: 52%;
+        }
+
+        .row {
+            display: table-row;
+            page-break-inside: avoid;
+        }
+
+    </style>
+
+    <!-- These styles are exactly like the screen styles except they use points (pt) as units
+        of measure instead of pixels (px) -->
+    <style media="print">
+        body {
+            font-family: 'Segoe UI', 'Microsoft Sans Serif', sans-serif;
+        }
+
+        header:before, header:after {
+            content: " ";
+            display: table;
+        }
+
+        header:after {
+            clear: both;
+        }
+
+        .invoiceNbr {
+            font-size: 30pt;
+            margin-right: 30pt;
+            margin-top: 30pt;
+            float: right;
+        }
+
+        .logo {
+            float: left;
+        }
+
+        .from {
+            float: left;
+        }
+
+        .to {
+            float: right;
+        }
+
+        .fromto {
+            border-style: solid;
+            border-width: 1pt;
+            border-color: #e8e5e5;
+            border-radius: 5pt;
+            margin: 20pt;
+            min-width: 200pt;
+        }
+
+        .fromtocontent {
+            margin: 10pt 15pt 10pt 10pt;
+        }
+
+        .panel {
+            background-color: #e8e5e5;
+            padding: 7pt;
+        }
+
+        .items {
+            clear: both;
+            display: table;
+            padding: 20pt;
+        }
+
+        div[class^="col-"] {
+            display: table-cell;
+            padding: 6pt;
+        }
+
+        .col-1-10 {
+            width: 10%;
+        }
+
+        .col-1-52 {
+            width: 52%;
+        }
+
+        .row {
+            display: table-row;
+            page-break-inside: avoid;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+        <div class="logo">
+            <img src="~/images/Caracan.png" alt="Carcanae logo maximus" height="90" width="297" />
+        </div>
+    <div class="invoiceNbr">
+        Report no.1
+        <br/>
+        {{"now" | date: "%Y-%m-%d %H:%M"}}
+    </div>
+</header>
+
+<div class="fromto from">
+    <div class="panel">CREATED:</div>
+    <div class="fromtocontent">
+        <span>Sebastian Rużanowski</span><br/>
+        <span>Junior Software Developer</span><br/>
+        <span>R&D Department</span><br/>
+    </div>
+</div>
+<div class="fromto to">
+    <div class="panel">PROPERTIES:</div>
+    <div class="fromtocontent">
+        <span>Visibility: Open</span><br/>
+        <span>Keywords: "Tede", "Seba", "Amadeo"</span><br/>
+        <span>Type: Quarterly Report</span>
+    </div>
+</div>
+
+<section class="items">
+    <div class="row">
+        <div class="col-1-10 panel">
+            Date Created
+        </div>
+        <div class="col-1-10 panel">
+            Name
+        </div>
+        <div class="col-1-52 panel">
+            Description
+        </div>
+        <div class="col-1-10 panel">
+            Barcode
+        </div>
+        <div class="col-1-10 panel">
+            Price
+        </div>
+    </div>
+    {% for product in report.Products %}
+    <div class="row">
+        <div class="col-1-52 panel">
+            {{product.CreatedDateTime}}
+        </div>
+        <div class="col-1-10 panel">
+            {{product.Name}}
+        </div>
+        <div class="col-1-52 panel">
+            {{product.Description}}
+        </div>
+        <div class="col-1-10 panel">
+            {{product.BarCode}}
+        </div>
+        <div class="col-1-10 panel">
+            {{product.Price}} zł
+        </div>
+    </div>
+    {% endfor %}
+</section>
+</body>
+</html>

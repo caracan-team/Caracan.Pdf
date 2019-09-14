@@ -1,15 +1,18 @@
-﻿using Caracan.Liquid;
-using Caracan.Pdf.Configuration;
+﻿using Caracan.Pdf.Configuration;
 using Caracan.Pdf.Converters;
-using Caracan.Pdf.Services;
 using Caracan.Pdf.Services.HtmlBuilder;
-using Caracan.Pdf.Services.IPdfGenerator;
-using Caracan.Templates;
+using Caracan.Pdf.Services.HtmlRenderer;
+using Caracan.Pdf.Services.PdfGenerator;
+using Caracan.Templates.Extensions;
+using Caracan.Templates.Loader;
+using Caracan.Templates.Manager;
 using Fluid;
+using Fluid.Values;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
 
-namespace Caracan.Pdf.Extensions
+namespace Caracan.Pdf.Installer
 {
     public static class PdfGeneratorExtensions
     {
@@ -29,14 +32,24 @@ namespace Caracan.Pdf.Extensions
 
             services.AddSingleton<ICaracanPdfGenerator, CaracanPdfGenerator>();
 
-            services.AddSingleton<ITemplateManager, TemplateManager>();
+            services.AddSingleton<IFluidBinder, FluidBinder>();
             services.AddSingleton<ITemplateLoader, TemplateLoader>();
-            TemplateContext.GlobalMemberAccessStrategy.Register<TemplateLiquidObject>();
+            
+            //fluid types registration
+            TemplateContext.GlobalMemberAccessStrategy.Register<JObject, object>((source, name) => source[name]);
+            TemplateContext.GlobalMemberAccessStrategy.Register<JObject, object>((source, name) => source[name]);
+            FluidValue.SetTypeMapping(typeof(JObject), o => new ObjectValue(o));
+            FluidValue.SetTypeMapping(typeof(JValue), o => FluidValue.Create(((JValue)o).Value));
+            
+            
+            TemplateContext.GlobalFilters.AddFilter("HtmlEncode", CustomFilters.HtmlEncode);
             
             services.AddSingleton<IHtmlRenderer, HtmlRenderer>();
-            services.AddSingleton<IHtmlBuilder, HtmlBuilder>();
+            services.AddSingleton<IReportBuilder, ReportBuilder>();
 
             return services;
         }
+        
+        
     }
 }

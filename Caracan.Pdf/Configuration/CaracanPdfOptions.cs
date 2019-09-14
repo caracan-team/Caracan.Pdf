@@ -20,6 +20,5 @@ namespace Caracan.Pdf.Configuration
         public object Height { get; set; }
         public MarginOptions MarginOptions { get; set; } = new MarginOptions();
         public bool PreferCSSPageSize { get; set; }
-        public bool RenderPdfCurrentDirectory { get; set; } = false;
     }
 }

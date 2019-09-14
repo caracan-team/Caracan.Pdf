@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Caracan.Pdf.Models
+﻿namespace Caracan.Pdf.Models
 {
     public class Format
     {
